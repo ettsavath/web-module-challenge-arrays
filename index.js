@@ -44,12 +44,14 @@ Use the copy function below to do the following:
     1. receive an array as a parameter - you will pass in originalFlavors as an argument when the function is invoked.
     2. Return a copy of the received array  
 */
+const iceCreamFlavor=[...originalFlavors];
 
-function copy(/*your code here*/){
-    /*your code here*/
+function copy(flavors){
+
+    return flavors;
 }    
 
-
+console.log(iceCreamFlavor);
 
 
 
@@ -65,8 +67,12 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 
 
 function is31Flavors(/*your code here*/){
-   /*your code here*/
+  return iceCreamFlavor.length ==31 ? 'true': 'false';
+ 
 }
+
+
+console.log(is31Flavors());
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Corporate has come to you with an idea for a new flavor: Rainbow Sherbert! They think this will be a game changer. You need to modify the array to include this flavor. 
@@ -80,10 +86,20 @@ Use the addFlavor function below to do the following:
     For example: addFlavor(originalFlavors, "Rainbow Sherbert") should return the array ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"]
 */
 
+newFlavor="Strawberry Lemonade";
 
-function addFlavor(/*your code here*/){
+function addFlavor(newAddition){
    /*your code here*/
+ iceCreamFlavor.unshift(newAddition);
+ return iceCreamFlavor;
+
+
+
 }
+
+console.log(addFlavor(newFlavor));
+
+
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -97,11 +113,15 @@ Use the removeLastFlavor function below to do the following:
     For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
+
+
 function removeLastFlavor(/*your code here*/){
    /*your code here*/
+   iceCreamFlavor.pop();
+   return iceCreamFlavor;
 }
 
-
+console.log(removeLastFlavor());
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function that returns a flavor at a given index in the array.
@@ -114,10 +134,23 @@ Use the getFlavorByIndex function below to do the following:
     For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
+let userChoice;
+let userFlavorChoiceIS;
+userChoice=prompt ('pick a flavor from 1 to 31');
+ 
+
+function getFlavorByIndex(userChoice){
+
+
+while(userChoice>31){
+    console.log('you enter an invalid choice.\n Please try again.')
+    userChoice=prompt ('pick a flavor from 1 to 31');
+}
+return userFlavorChoiceIS=iceCreamFlavor[userChoice];
     /*your code here*/
 }
 
+console.log(getFlavorByIndex(userChoice));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, 
@@ -134,9 +167,19 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
+let removeFlavor="Peach";
+let removeItem;
+
+function removeFlavorByName(itemToRemove){
+
+    removeItem = iceCreamFlavor.indexOf(itemToRemove);
+    iceCreamFlavor.splice(removeItem,1);
+     console.log(iceCreamFlavor); 
+     return  itemToRemove + ' flavor has been removed.';
     /*your code here*/
 }
+
+console.log(removeFlavorByName(removeFlavor));
 
 
 
@@ -158,11 +201,24 @@ Use the filterByWord function below to do the following:
     HINT - you can use the .includes method to help you solve this
 
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
-*/
 
-function filterByWord(/*your code here*/){
-    /*your code here*/
+
+*/
+const cocoArray= [];
+const promoIceCream= [...iceCreamFlavor];
+let cocoPromo=true;
+let cocoFlavorIndex;
+
+
+
+while(cocoPromo ==true){
+  cocoPromo=promoIceCream.includes('Chocolate')
+  cocoFlavorIndex=promoIceCream.indexOf('Chocolate');
+cocoArray.push(promoIceCream[cocoFlavorIndex]);
+promoIceCream.splice(cocoFlavorIndex,1);
+cocoPromo=promoIceCream.includes('Chocolate');
 }
+console.log (cocoArray);
 
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
